@@ -3,7 +3,7 @@ function Player(_name)
 	this.name = _name;
 	this.width = 64;
 	this.height = 64;
-	this.position = {x: Canvas.width/2, y: Canvas.height - this.height};
+	this.position = {x: Canvas.width/2, y: Canvas.height/2};
 	this.speed = 5;
 	this.gravity = 1;
 	this.jumpLenght = 0;

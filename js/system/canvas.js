@@ -10,6 +10,10 @@ var Canvas = (function()
 		this.paused = false;
 		this.closed = false;
 		this.background;
+		this.reservedPixels = {
+			x: [],
+			y: []
+		};
 
 		this.create = function( _width, _height )
 		{
@@ -83,6 +87,14 @@ var Canvas = (function()
 			this.ctx.drawImage(this.background, 0, 0, this.width, this.height);
 		};
 
+		this.reservPixels = function(fromX, fromY, toX, toY)
+		{
+			for(var i = fromX; i <= toX; i++)
+				this.reservedPixels.x.push(i);
+			for(var j = fromY; j <= toY; j++)
+				this.reservedPixels.y.push(j);
+		};
+
 		return {
 			getCanvas: this.getCanvas,
 			ctx: this.getCtx,
@@ -92,7 +104,9 @@ var Canvas = (function()
 			close: this.close,
 			isClosed: this.isClosed,
 			setBackground: this.setBackground,
-			renderBackground: this.renderBackground
+			renderBackground: this.renderBackground,
+			reservPixels: this.reservPixels,
+			reservedPixels: this.reservedPixels
 		};
 
 	})();

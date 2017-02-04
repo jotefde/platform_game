@@ -32,7 +32,18 @@
 	{
 		Canvas.setBackground('images/background.jpg');
 		this.Player = new Player("Kuba");
-		Grounds.addGrass("straight", 150, 40, 128, 64);
+		Grounds.addGrass("straight", 0, this.height - 64);
+		Grounds.addGrass("straight", 64, this.height - 64);
+		Grounds.addGrass("straight", 64*2, this.height - 64);
+		Grounds.addGrass("straight", 64*3, this.height - 64);
+		Grounds.addGrass("straight", 64*4, this.height - 64);
+		Grounds.addGrass("straight", 64*5, this.height - 64);
+		Grounds.addGrass("straight", 64*6, this.height - 64);
+		Grounds.addGrass("straight", 64*7, this.height - 64);
+		Grounds.addGrass("straight", 64*8, this.height - 64);
+		Grounds.addGrass("straight", 64*9, this.height - 64);
+
+		console.log(Grounds.list);
 	};
 
 	App.prototype.drawLoop = function()
@@ -49,6 +60,21 @@
 		Grounds.renderAll();
 		Canvas.ctx.fillText( Keyboard.getPressedKey(), 10, 20);
 
+		for(var c = this.height; c >= 0; c-=64)
+		{
+			Canvas.ctx.beginPath();
+			Canvas.ctx.moveTo(0, c);
+			Canvas.ctx.lineTo(this.width, c);
+			Canvas.ctx.stroke();
+		}
+
+		for(var r = 0; r <= this.width; r+=64)
+		{
+			Canvas.ctx.beginPath();
+			Canvas.ctx.moveTo(r, 0);
+			Canvas.ctx.lineTo(r, this.height);
+			Canvas.ctx.stroke();
+		}
 	};
 
 	App.prototype.eventsListener = function()

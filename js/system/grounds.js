@@ -36,9 +36,10 @@ var Grounds =
 	count: 0,
 	list: [],
 
-	addGrass: function(type, x, y, width, height)
+	addGrass: function(type, x, y, size)
 	{
-		this.list.push(new grassGround(type, x, y, [width, height]));
+		this.list.push(new grassGround(type, x, y, size));
+		Canvas.reservPixels(this.list[this.count].position.x, this.list[this.count].position.y, this.list[this.count].width, this.list[this.count].height);
 		this.count++;
 	},
 
